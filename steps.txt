@@ -1,0 +1,17 @@
+rm $home/Desktop/Tensorflow/Challenge/train_val_images_mini/*/*/[4-9]* -r -Force
+
+python retrain.py --bottleneck_dir=bottlenecks --model_dir=inception --summaries_dir=training_summaries/long --output_graph=retrained_graph.pb --output_labels=retrained_labels.txt --image_dir=Train --fine_tune=True --initial_learning_rate=0.001 --input_queue_memory_factor=1 --print_misclassified_test_images --how_many_training_steps 3000
+
+
+python retrain.py --bottleneck_dir=bottlenecks --model_dir=inception --summaries_dir=training_summaries/long --output_graph=retrained_graph.pb --output_labels=retrained_labels.txt --image_dir=train_val_images_mini --fine_tune=True --initial_learning_rate=0.001 --input_queue_memory_factor=1 --how_many_training_steps 500 --validation_percentage=5 --testing_percentage=5
+
+
+use tab to complete command while typing in command line
+
+
+do 
+pip freeze > requirements.txt
+
+then you can 
+pip install -r requirements.txt
+
